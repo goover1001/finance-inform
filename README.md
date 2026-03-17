@@ -65,16 +65,9 @@ Finance Inform 是一款为券商分析师、基金经理、研究员等专业�
 | `WP_USERNAME` | WordPress 用户名 | `admin` |
 | `WP_APP_PASSWORD` | WordPress 应用密码 | `xxxx xxxx xxxx xxxx` |
 
-### 4. 创建 WordPress 应用密码
 
-1. 登录 WordPress 后台
-2. 进入 **用户** → **个人资料**
-3. 滚动到 **应用程序密码** 部分
-4. 输入名称：`Finance Inform Bot`
-5. 点击 **添加新应用程序密码**
-6. 复制生成的密码（仅显示一次，格式为 `xxxx xxxx xxxx xxxx`）
 
-### 5. 自动触发 GitHub Actions
+### 4. 自动触发 GitHub Actions
 
 配置完成后，GitHub Actions 会自动运行。你也可以手动触发：
 
