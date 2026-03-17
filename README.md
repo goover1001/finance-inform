@@ -1,29 +1,16 @@
-# 📈 FinNewsCollectionBot · 每日财经速递
+# 📈 Finance Inform · 每日财经速递
 
 **为专业投资者打造的智能财经资讯助手**
 
-[![📡 RSS 财经新闻自动推送](https://github.com/sgrsun3/FinNewsCollectionBot/actions/workflows/rss-bot.yml/badge.svg)](https://github.com/sgrsun3/FinNewsCollectionBot/actions/workflows/rss-bot.yml)
-![GitHub Stars](https://img.shields.io/github/stars/sgrsun3/FinNewsCollectionBot?style=social)
-![License](https://img.shields.io/github/license/sgrsun3/FinNewsCollectionBot)
+[![📡 RSS 财经新闻自动推送](https://github.com/jx-177/finance-inform/actions/workflows/rss-bot.yml/badge.svg)](https://github.com/jx-177/finance-inform/actions/workflows/rss-bot.yml)
+![GitHub Stars](https://img.shields.io/github/stars/jx-177/finance-inform?style=social)
+![License](https://img.shields.io/github/license/jx-177/finance-inform)
 
----
-## 🧧 支持作者 · 让项目持续进化！
-
-如果本项目对你有帮助，欢迎打赏支持，资助我多喝几杯咖啡 ☕，跑更多模型 💻～
-
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/0f8c1057-3ab2-4e87-8c32-5a7726214a5d" width="280" />
-</div>
-
-- 💬 微信号：`ArkhamKni9ht`
-- 🙌 感谢每一位 Star、Fork 和支持者！
-
-> ✨ 金融爸爸一块钱我不嫌少，一百块我也不嫌多 😊
 ---
 
 ## 🎯 项目简介
 
-FinNewsCollectionBot 是一款为券商分析师、基金经理、研究员等专业投资人量身打造的**财经资讯智能摘要助手**。
+Finance Inform 是一款为券商分析师、基金经理、研究员等专业投资人量身打造的**财经资讯智能摘要助手**。
 
 它自动聚合主流财经媒体的 RSS 信息源，并调用 **DeepSeek 大语言模型**，每天两次推送核心财经摘要，帮助你快速掌握全球市场动态、产业趋势与政策走向。
 
@@ -35,13 +22,13 @@ FinNewsCollectionBot 是一款为券商分析师、基金经理、研究员等�
   每天上午 09:00、下午 17:00 定时运行，生成分析报告
 
 - 🌐 **多源财经 RSS 聚合**  
-  支持华尔街见闻、36氪、东方财富、华尔街日报、BBC 等主流财经媒体
+  支持华尔街见闻、36 氪、东方财富、华尔街日报、BBC 等主流财经媒体
 
 - 🧠 **大模型深度分析**  
   使用 DeepSeek 大语言模型自动提炼财经新闻的核心内容与趋势判断
 
-- 📲 **微信即时推送**  
-  集成 Server 酱服务，生成的财经摘要自动推送至你的微信
+- 📝 **WordPress 自动发布**  
+  生成的财经摘要自动发布到你的 WordPress 网站
 
 ---
 
@@ -51,21 +38,49 @@ FinNewsCollectionBot 是一款为券商分析师、基金经理、研究员等�
 - feedparser + newspaper3k
 - DeepSeek 大语言模型 API
 - GitHub Actions 自动定时部署
+- WordPress REST API
 
 ---
 
 ## 🔧 快速开始（快速部署）
 
-1. **Fork 本项目**
-2. 配置你的 RSS 源地址和 DeepSeek API Key
-3. 在 GitHub 中设置 Secrets：
-   ```bash
-   OPENAI_API_KEY=your_deepseek_api_key
-   SERVER_CHAN_KEYS=your_serverchan_key
-   ```
-4. 自动触发 GitHub Actions 开始运行
+### 1. Fork 本项目
 
-📌 成功部署后，每天两次财经摘要将自动生成并推送到你的微信！
+点击页面右上角的 **Fork** 按钮
+
+### 2. 配置阿里云百炼 API Key
+
+获取阿里云百炼 API Key：https://bailian.console.aliyun.com/
+
+### 3. 在 GitHub 中设置 Secrets
+
+进入你的 Fork 仓库 → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**
+
+添加以下 Secrets：
+
+| Secret 名称 | 说明 | 示例 |
+|------------|------|------|
+| `OPENAI_API_KEY` | 阿里云百炼 API Key | `sk-xxxxxxxxxxxxxxxx` |
+| `WP_SITE_URL` | WordPress 网站地址 | `https://your-site.com` |
+| `WP_USERNAME` | WordPress 用户名 | `admin` |
+| `WP_APP_PASSWORD` | WordPress 应用密码 | `xxxx xxxx xxxx xxxx` |
+
+### 4. 创建 WordPress 应用密码
+
+1. 登录 WordPress 后台
+2. 进入 **用户** → **个人资料**
+3. 滚动到 **应用程序密码** 部分
+4. 输入名称：`Finance Inform Bot`
+5. 点击 **添加新应用程序密码**
+6. 复制生成的密码（仅显示一次，格式为 `xxxx xxxx xxxx xxxx`）
+
+### 5. 自动触发 GitHub Actions
+
+配置完成后，GitHub Actions 会自动运行。你也可以手动触发：
+
+进入 **Actions** → **📡 RSS 财经新闻自动推送** → **Run workflow**
+
+📌 成功部署后，每天两次财经摘要将自动生成并发布到你的 WordPress 网站！
 
 ---
 
@@ -82,10 +97,10 @@ FinNewsCollectionBot 是一款为券商分析师、基金经理、研究员等�
 
 ```mermaid
 graph TD
-  A[财经RSS源] --> B[抓取文章]
-  B --> C[调用DeepSeek大模型]
+  A[财经 RSS 源] --> B[抓取文章]
+  B --> C[调用 DeepSeek 大模型]
   C --> D[生成财经摘要]
-  D --> E[Server酱推送到微信]
+  D --> E[发布到 WordPress]
 ```
 
 ---
@@ -107,4 +122,4 @@ graph TD
 
 ---
 
-© 2024 sgrsun3 | MIT License
+© 2024-2026 | MIT License
